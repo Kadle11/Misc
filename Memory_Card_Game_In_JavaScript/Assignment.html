@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+		/*538 x 700*/
+		body{background-color:black;}
+		h1{text-align:center; color:white; font-family:cursive; font-style:italic;}
+		img
+		{
+			display:inline;
+			width:300px,
+			padding:3px;
+			margin:2px;
+			border: 2px solid blue;
+			max-height:150px;
+
+		}
+		span
+		{font-weight:bold;}
+
+		@keyframes twist
+		{
+			0% {-webkit-transform: rotateY(0deg);}
+			10% {-webkit-transform: rotateY(36deg);}
+			20% {-webkit-transform: rotateY(72deg);}
+			30% {-webkit-transform: rotateY(108deg);}
+			40% {-webkit-transform: rotateY(144deg);}
+			50% {-webkit-transform: rotateY(180deg);}
+			60% {-webkit-transform: rotateY(216deg);}
+			70% {-webkit-transform: rotateY(252deg);}
+			80% {-webkit-transform: rotateY(288deg);}
+			90% {-webkit-transform: rotateY(334deg);}
+			100% {-webkit-transform: rotateY(360deg);}
+		}
+		img:hover
+		{
+			animation-name:twist;
+			animation-duration:0.2s;
+			animation-iteration-count:3;
+			animation-delay:0.2s;
+		}
+		#row{margin:auto; width:800px}
+		#done
+		{
+			display:block;
+			color:white;
+			font-family:"Times New Roman";
+			background-color:black;
+			border:solid white 2px;
+			margin:auto;
+			width:50%;
+			font-style:italic;
+			padding:10px;
+			text-align:center;
+		}
+	</style>
+</head>
+
+<body>
+		<h1 id="Quote">What Happens when an Unstoppable Force Meets an Immovable Object?<br>-Joker</h1>
+	<div id="row">
+		<img id="r0c0" class="c2" src="back.jpg" />
+		<img id="r0c1" class="c6" src="back.jpg" />
+		<img id="r0c2" class="c5" src="back.jpg" />
+		<img id="r0c3" class="c4" src="back.jpg" />
+		<img id="r0c4" class="c0" src="back.jpg" />
+		<img id="r0c5" class="c3" src="back.jpg" />
+		<img id="r0c6" class="c1" src="back.jpg" />
+	</div>
+	<div id="row">
+		<img id="r1c0" class="c3" src="back.jpg" />
+		<img id="r1c1" class="c2" src="back.jpg" />
+		<img id="r1c2" class="c6" src="back.jpg" />
+		<img id="r1c3" class="c0" src="back.jpg" />
+		<img id="r1c4" class="c4" src="back.jpg" />
+		<img id="r1c5" class="c5" src="back.jpg" />
+		<img id="r1c6" class="c2" src="back.jpg" />
+	</div>
+	<div id="row">
+		<img id="r2c0" class="c2" src="back.jpg" />
+		<img id="r2c1" class="c1" src="back.jpg" />
+		<img id="r2c2" class="c3" src="back.jpg" />
+		<img id="r2c3" class="c6" src="back.jpg" />
+		<img id="r2c4" class="c4" src="back.jpg" />
+		<img id="r2c5" class="c0" src="back.jpg" />
+		<img id="r2c6" class="c1" src="back.jpg" />
+	</div>
+	<div id="row">
+		<img id="r3c0" class="c0" src="back.jpg" />
+		<img id="r3c1" class="c6" src="back.jpg" />
+		<img id="r3c2" class="c5" src="back.jpg" />
+		<img id="r3c3" class="c4" src="back.jpg" />
+		<img id="r3c4" class="c1" src="back.jpg" />
+		<img id="r3c5" class="c3" src="back.jpg" />
+		<img id="r3c6" class="c5" src="back.jpg" />
+
+	</div>
+
+</body>
+<script>
+		var date= new Date();
+		var count=0;
+		var start=date.getTime();
+		var finish=0;
+		var arr=[];
+		var type_arr=[];
+		var card_arr=[0,1,2,3,4,5,6];
+		var card_arr1=[0,1,2,3,4,5,6];
+		var clicks=0;
+		function createtype(type)
+		{
+			switch(type)
+			{
+				case 0: type_arr=["r0c4","r1c3","r2c5","r3c0"]; break;
+				case 1: type_arr=["r0c6","r2c1","r2c6","r3c4"]; break;
+				case 2: type_arr=["r0c0","r1c1","r2c0","r1c6"]; break;
+				case 3: type_arr=["r0c5","r1c0","r2c2","r3c5"]; break;
+				case 4: type_arr=["r0c3","r1c4","r2c4","r3c3"]; break;
+				case 5: type_arr=["r0c2","r1c5","r3c2","r3c6"]; break;
+				case 6: type_arr=["r0c1","r1c2","r2c3","r3c1"]; break;
+			}
+		}
+
+		function shuffle(array)
+		{
+
+			 var currentIndex=array.length, temporaryValue, randomIndex;
+			 while (0!==currentIndex)
+			 {
+			 	randomIndex = Math.floor(Math.random() * currentIndex);
+				currentIndex -= 1;
+				temporaryValue = array[currentIndex];
+				array[currentIndex] = array[randomIndex];
+				array[randomIndex] = temporaryValue;
+			  }
+			  return array;
+
+		}
+
+
+		//card_arr=shuffle(card_arr);
+		//console.log(card_arr);
+		card_arr1=shuffle(card_arr1);
+		card0=document.querySelectorAll(".c"+card_arr[0]);
+		card0=Array.from(card0);
+		card1=document.querySelectorAll(".c"+card_arr[1]);
+		card1=Array.from(card1);
+		card2=document.querySelectorAll(".c"+card_arr[2]);
+		card2=Array.from(card2);
+		card3=document.querySelectorAll(".c"+card_arr[3]);
+		card3=Array.from(card3);
+		card4=document.querySelectorAll(".c"+card_arr[4]);
+		card4=Array.from(card4);
+		card5=document.querySelectorAll(".c"+card_arr[5]);
+		card5=Array.from(card5);
+		card6=document.querySelectorAll(".c"+card_arr[6]);
+		card6=Array.from(card6);
+
+		var change0=function(e)
+		{
+			e.target.src="Card_"+card_arr1[0]+".jpg";
+			arr.push(e.target.id);
+			//obj_main.show(e.target.id, 0);
+			obj_main.check(card_arr[0], card0);
+		}
+		var change1=function(e)
+		{
+			e.target.src="Card_"+card_arr1[1]+".jpg";
+			arr.push(e.target.id);
+			//obj_main.show(e.target.id, 1);
+			obj_main.check(card_arr[1], card1);
+		}
+		var change2=function(e)
+		{
+			e.target.src="Card_"+card_arr1[2]+".jpg";
+			arr.push(e.target.id);
+			//obj_main.show(e.target.id, 2);
+			obj_main.check(card_arr[2], card2);
+		}
+		var change3=function(e)
+		{
+			e.target.src="Card_"+card_arr1[3]+".jpg";
+			arr.push(e.target.id);
+			//obj_main.show(e.target.id, 3);
+			obj_main.check(card_arr[3], card3);
+		}
+		var change4=function(e)
+		{
+			e.target.src="Card_"+card_arr1[4]+".jpg";
+			arr.push(e.target.id);
+			//obj_main.show(e.target.id, 4);
+			obj_main.check(card_arr[4], card4);
+		}
+		var change5=function(e)
+		{
+			e.target.src="Card_"+card_arr1[5]+".jpg";
+			arr.push(e.target.id);
+			//obj_main.show(e.target.id, 5);
+			obj_main.check(card_arr[5], card5);
+		}
+		var change6=function(e)
+		{
+			e.target.src="Card_"+card_arr1[6]+".jpg";
+			arr.push(e.target.id);
+			//obj_main.show(e.target.id, 6);
+			obj_main.check(card_arr[6], card6);
+
+		}
+
+		function listener()
+			{
+				for(var i=0;i<card0.length;i++)
+				{
+					card0[i].addEventListener("click", change0, false);
+					//console.log(card0[i]);
+				}
+
+				for(var i=0;i<card1.length;i++)
+				{
+					card1[i].addEventListener("click", change1, false);
+				}
+
+				for(var i=0;i<card2.length;i++)
+				{
+					card2[i].addEventListener("click", change2, false);
+				}
+
+				for(var i=0;i<card3.length;i++)
+				{
+					card3[i].addEventListener("click", change3, false);
+				}
+
+				for(var i=0;i<card4.length;i++)
+				{
+					card4[i].addEventListener("click", change4, false);
+				}
+
+				for(var i=0;i<card5.length;i++)
+				{
+					card5[i].addEventListener("click", change5, false);
+				}
+
+				for(var i=0;i<card6.length;i++)
+				{
+					card6[i].addEventListener("click", change6, false);
+				}
+			}
+
+/*		var head=document.getElementById("Quote");
+			head.addEventListener("click",test,false);
+
+			var i=0;
+			function test(e)
+			{
+				i++;
+				console.log(i);
+				head.removeEventListener("click", test, false);
+			}
+*/
+		var obj_main=
+		{
+
+			check:function(type, cards)
+			{
+
+				clicks++;
+				createtype(type);
+				var mem_1, mem_2;
+				var flag1=0, flag2=0;
+				if(clicks==40)
+				{
+					
+					var game_over=document.createElement("div");
+					game_over.id="done";
+					game_over.innerHTML="Game Over, You have Exceeded 40 Tries.";
+					document.body.appendChild(game_over);
+
+					for(var i=0;i<card0.length;i++)
+					{
+						card0[i].removeEventListener("click", change0, false);
+						//console.log(card0[i]);
+					}
+
+					for(var i=0;i<card1.length;i++)
+					{
+						card1[i].removeEventListener("click", change1, false);
+					}
+
+					for(var i=0;i<card2.length;i++)
+					{
+						card2[i].removeEventListener("click", change2, false);
+					}
+
+					for(var i=0;i<card3.length;i++)
+					{
+						card3[i].removeEventListener("click", change3, false);
+					}
+
+					for(var i=0;i<card4.length;i++)
+					{
+						card4[i].removeEventListener("click", change4, false);
+					}
+
+					for(var i=0;i<card5.length;i++)
+					{
+						card5[i].removeEventListener("click", change5, false);
+					}
+
+					for(var i=0;i<card6.length;i++)
+					{
+						card6[i].removeEventListener("click", change6, false);
+					}
+
+				}
+
+				if(arr.length==1)
+				{
+					return;
+				}
+				if((arr.length==2)&&(arr[1]!=arr[0]))
+				{
+					mem_1=document.getElementById(arr[0]);
+					mem_2=document.getElementById(arr[1]);
+					if(arr[0]!=arr[1])
+					{
+						for(var i=0;i<4;i++)
+						{
+							if(type_arr[i]==mem_1.id)
+								flag1=1;
+						}
+						for(var j=0;j<4;j++)
+						{
+							if(type_arr[j]==mem_2.id)
+								flag2=1;
+						}
+						arr.pop();
+						arr.pop();
+					}
+					else
+					{
+						mem_1=0;
+						mem_2=0;
+						arr.pop();
+						arr.pop();
+					}
+
+					if(flag1&&flag2)
+					{
+						count_flag=0;
+						var index1, index2;
+						for(var i =0; i<cards.length; i++)
+						{
+							if((cards[i].id==mem_2.id))
+							{
+								for(var j=0;j<cards.length; j++)
+								{
+									if((cards[j].id==mem_1.id)&&(j!=i))
+									{
+										count_flag=1;
+									}
+								}
+							}
+						}
+
+
+						if(count_flag==1)
+						{
+							for(var i =0; i<cards.length; i++)
+							{
+								if((cards[i].id==mem_2.id))
+								{
+									cards.splice(i,1);
+									for(var j=0;j<cards.length; j++)
+									{
+										if((cards[j].id==mem_1.id)&&(j!=i))
+										{
+											cards.splice(j,1);
+										}
+									}
+								}
+							}
+							count++;
+						}
+						//console.log(count);
+						//console.log(cards);
+						switch(type)
+						{
+							case 0:
+								//console.log(0);
+								mem_1.removeEventListener("click", change0, false);
+								mem_2.removeEventListener("click", change0, false);
+								break;
+							case 1:
+								//console.log(1);
+								mem_1.removeEventListener("click", change1, false);
+								mem_2.removeEventListener("click", change1, false);
+								break;
+							case 2:
+								//console.log(2);
+								mem_1.removeEventListener("click", change2, false);
+								mem_2.removeEventListener("click", change2, false);
+								break;
+							case 3:
+								//console.log(3);
+								mem_1.removeEventListener("click", change3, false);
+								mem_2.removeEventListener("click", change3, false);
+								break;
+							case 4:
+								//console.log(4);
+								mem_1.removeEventListener("click", change4, false);
+								mem_2.removeEventListener("click", change4, false);
+								break;
+							case 5:
+								//console.log(5);
+								mem_1.removeEventListener("click", change5, false);
+								mem_2.removeEventListener("click", change5, false);
+								break;
+							case 6:
+								//console.log(6);
+								mem_1.removeEventListener("click", change6, false);
+								mem_2.removeEventListener("click", change6, false);
+								break;
+						}
+						console.log(mem_1);
+						console.log(mem_2);
+					//	mem_2.style.border="2px solid yellow";
+					//	mem_2.removeEventListener("click", change4, false)
+					}
+
+					else if((mem_1)&&(mem_2))
+					{
+						mem_1.src="back.jpg";
+						mem_2.src="back.jpg";
+						//console.log(mem_1.id);
+						//console.log(arr);
+					}
+
+				}
+
+				if(count==14)
+				{
+					var game_over=document.createElement("div");
+					game_over.id="done";
+					var x= new Date();
+					finish=x.getTime();
+					var time=(finish-start)/1000;
+					game_over.innerHTML="You Finished the Game in <span>"+time+"</span> seconds.";
+					document.body.appendChild(game_over);
+
+				}
+
+			}
+
+
+		}
+
+	listener();
+
+</script>
+
+</html>

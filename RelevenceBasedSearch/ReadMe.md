@@ -3,7 +3,7 @@
 The Program Implements Ukkonen's algorithm to create a Generalized Suffix Tree.
 The Tree is used to search for strings in each of the tales and returns the most relevant tales/documents.
 
-The Program reads the dataset from "AesopTales.txt" (Included in Zip FIle)
+The Program reads the dataset from "AesopTales.txt" (Included in Repository)
 
 To compile the code,
 ```g++ AA_A3_01FB16ECS450.cpp -Wall -g -o Test.out``` 

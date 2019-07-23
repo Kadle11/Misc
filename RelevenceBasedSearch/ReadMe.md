@@ -15,7 +15,7 @@ Format of Query File:
 The First line containing the string to be queried.
 The Query strings can have whitespaces but No New Line Characters, "Hello World" is a Valid Query.
 
-Sample Input and Output files have been included in the Zip.
+Sample Input and Output files have been included.
 
 The relevance criteria considered are number of occurrences, whether the string/word occurs in the title, longest common word (Not Subtring, ie, If the query string is 'Hello World', then the program searches for 'Hello World', 'Hello' and 'World')
 
